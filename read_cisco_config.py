@@ -11,7 +11,7 @@ def find_pfs_2(crypto_maps):
     for cm in crypto_maps:
         for i in cm.children:
             if "set pfs group2" in i.text:
-                print cm.text + "is using pfs G2"
+                print cm.text + "is using PFS Group2"
 
 def find_non_aes_crypto(tranform_set,crypto_maps):
     non_aes_list = []
@@ -21,7 +21,6 @@ def find_non_aes_crypto(tranform_set,crypto_maps):
     for cm in crypto_maps:
         for i in cm.children:
             if "set transform-set" in i.text:
-                print i.text.split()[2]
                 if i.text.split()[2] in non_aes_list:
                     print cm.text + "is using TS " + i.text.split()[2] + " which isn't using AES"
 
